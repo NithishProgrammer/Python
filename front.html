@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data from AI</title>
+</head>
+<body>
+
+    <div>Finan_Response:   <span id="respp"></span></div>
+    
+    <script>
+        async function sendMessage() {
+          const response = await fetch("http://localhost:5000/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ prompt: "Describe Sundar pichai in a sarcastic way" }),
+          });
+      
+          const data = await response.json();
+          document.getElementById('respp').innerText = data.reply;
+        }
+      
+        sendMessage();
+      </script>
+      
+      
+</body>
+</html>
